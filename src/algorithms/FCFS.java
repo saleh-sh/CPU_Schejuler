@@ -2,10 +2,8 @@ package algorithms;
 
 import java.util.LinkedList;
 import java.util.Queue;
-
 import IO.OutputGenerator;
 import entities.Processor;
-import entities.State;
 import entities.Task;
 
 public class FCFS implements Scheduler {
@@ -23,15 +21,15 @@ public class FCFS implements Scheduler {
         Task currentTask = null;
 
         while (!this.readyQueue.isEmpty()) {
-            processor.increaseTime();
 
             if (!processor.isBusy()) {
                 // selected task
                 currentTask = getNextTask();
-                currentTask.run();
 
                 // assign cpu to task
                 processor.assign(currentTask);
+
+                currentTask.run();
             }
 
             currentTask.increaseTotalTime();
@@ -41,6 +39,7 @@ public class FCFS implements Scheduler {
             }
 
             OutputGenerator.generateOutput();
+            processor.increaseTime();
         }
     }
 

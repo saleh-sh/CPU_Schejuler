@@ -10,9 +10,13 @@ public class Processor {
     private Scheduler scheduler;
     public static Processor INSTANCE = new Processor();
 
-    private Processor(){
+    private Processor() {
         this.time = 0;
         this.busy = false;
+    }
+
+    public void run() {
+        this.scheduler.schedule();
     }
 
     public boolean isBusy() {
@@ -24,12 +28,12 @@ public class Processor {
         this.busy = true;
     }
 
-    public void unassign(){
+    public void unassign() {
         this.currentTask = null;
         this.busy = false;
     }
 
-    public void increaseTime(){
+    public void increaseTime() {
         this.time++;
     }
 
@@ -41,9 +45,15 @@ public class Processor {
     public String toString() {
         StringBuilder builder = new StringBuilder();
 
-        builder.append("_______________________________________________________________________________");
-        builder.append("Ready Queue : \n" + this.scheduler.toString());
-        builder.append("Current Task : \n" + this.currentTask.toString());
+        builder.append("____________________\n");
+        builder.append(" Total CPU Time : " + this.time + "\n");
+        builder.append(" ####################\n");
+        builder.append(" Ready Queue : \n" + this.scheduler.toString());
+        builder.append(" ####################\n");
+        if (this.currentTask != null)
+            builder.append(" Current Task : \n" + this.currentTask.toString());
+        else
+            builder.append(" Current Task : \n" + "  processor is free!!!\n");
 
         return builder.toString();
     }

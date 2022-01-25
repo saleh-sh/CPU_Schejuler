@@ -2,7 +2,6 @@ package IO;
 
 import java.util.Scanner;
 import algorithms.FCFS;
-import algorithms.Scheduler;
 import entities.Processor;
 import entities.Task;
 import entities.Type;

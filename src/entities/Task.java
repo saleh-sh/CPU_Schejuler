@@ -39,10 +39,10 @@ public class Task {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("Task Name -> " + this.NAME + "\n");
-        builder.append("Task Type -> " + this.TYPE + "\n");
-        builder.append("Task Total Time -> " + this.totalTime + "\n");
-        builder.append("Task State -> " + this.state + "\n");
+        builder.append("  Task Name -> " + this.NAME + "\n");
+        builder.append("  Task Type -> " + this.TYPE + "\n");
+        builder.append("  Task Total Time -> " + this.totalTime + "\n");
+        builder.append("  Task State -> " + this.state + "\n");
 
         return builder.toString();
     }

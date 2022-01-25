@@ -6,6 +6,6 @@ public class Main {
 
         Initializer.setup();
         Processor processor = Processor.INSTANCE;
-
+        processor.run();
     }
 }
