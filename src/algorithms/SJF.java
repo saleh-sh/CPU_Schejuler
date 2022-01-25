@@ -1,7 +1,6 @@
 package algorithms;
 
 import java.util.ArrayList;
-
 import entities.Task;
 
 public class SJF implements Scheduler{
@@ -17,5 +16,11 @@ public class SJF implements Scheduler{
         return null;
     }
 
+    @Override
+    public void addToReady(Task t) {
+        this.readyQueue.add(t);        
+    }
+
+    
     
 }

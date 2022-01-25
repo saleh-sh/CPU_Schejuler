@@ -2,7 +2,6 @@ package algorithms;
 
 import java.util.LinkedList;
 import java.util.Queue;
-
 import entities.Task;
 
 public class RoundRobin implements Scheduler{
@@ -15,6 +14,11 @@ public class RoundRobin implements Scheduler{
     @Override
     public Task schedule() {
         return null;
+    }
+
+    @Override
+    public void addToReady(Task t) {
+        this.readyQueue.add(t);        
     }
     
 }

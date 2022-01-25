@@ -13,5 +13,6 @@ public class Task {
         this.PRIORITY = type.priority;
         this.DURATION = duration;
         this.totalTime = 0;
+        this.state = State.READY;   
     }
 }
