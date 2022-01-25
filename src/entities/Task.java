@@ -47,7 +47,7 @@ public class Task {
 
     public boolean isPreemted(int quantom){
         int currentTime = Processor.INSTANCE.getTime();
-        return (currentTime - this.runPoint + 1 > quantom);
+        return ((currentTime - this.runPoint + 1 > quantom) && Processor.INSTANCE.getReadyTaskCount() != 0);
     }
 
     public int getRunPoint() {
