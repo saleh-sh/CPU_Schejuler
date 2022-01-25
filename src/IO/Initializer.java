@@ -3,13 +3,14 @@ package IO;
 import java.util.Scanner;
 import algorithms.FCFS;
 import algorithms.Scheduler;
+import entities.Processor;
 import entities.Task;
 import entities.Type;
 
 public class Initializer {
 
-    public Scheduler srtup() {
-        
+    public static void setup() {
+
         FCFS fcfs = new FCFS();
         // SJF sjf = new SJF();
         // RoundRobin RR = new RoundRobin();
@@ -28,7 +29,8 @@ public class Initializer {
             }
 
         }
-        return fcfs;
+
+        Processor.INSTANCE.setScheduler(fcfs);
     }
 
 }

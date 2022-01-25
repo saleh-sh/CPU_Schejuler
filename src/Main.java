@@ -1,14 +1,11 @@
-import java.util.Scanner;
-
-import algorithms.FCFS;
-import algorithms.RoundRobin;
-import algorithms.SJF;
-import entities.Task;
-import entities.Type;
+import IO.Initializer;
+import entities.Processor;
 
 public class Main {
     public static void main(String[] args) {
 
-        
+        Initializer.setup();
+        Processor processor = Processor.INSTANCE;
+
     }
 }

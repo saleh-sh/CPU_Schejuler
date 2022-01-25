@@ -1,10 +1,13 @@
 package entities;
 
+import algorithms.Scheduler;
+
 public class Processor {
 
     private boolean busy;
     private int time;
     private Task currentTask;
+    private Scheduler scheduler;
     public static Processor INSTANCE = new Processor();
 
     private Processor(){
@@ -28,5 +31,20 @@ public class Processor {
 
     public void increaseTime(){
         this.time++;
+    }
+
+    public void setScheduler(Scheduler scheduler) {
+        this.scheduler = scheduler;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+
+        builder.append("_______________________________________________________________________________");
+        builder.append("Ready Queue : \n" + this.scheduler.toString());
+        builder.append("Current Task : \n" + this.currentTask.toString());
+
+        return builder.toString();
     }
 }

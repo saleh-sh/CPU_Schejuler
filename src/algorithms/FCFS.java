@@ -3,6 +3,7 @@ package algorithms;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import IO.OutputGenerator;
 import entities.Processor;
 import entities.State;
 import entities.Task;
@@ -38,7 +39,8 @@ public class FCFS implements Scheduler {
                 currentTask.terminate();
                 processor.unassign();
             }
-            
+
+            OutputGenerator.generateOutput();
         }
     }
 
@@ -52,4 +54,12 @@ public class FCFS implements Scheduler {
         this.readyQueue.add(t);
     }
 
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        for(Task task : this.readyQueue){
+            builder.append(task.toString());
+        }
+        return builder.toString();
+    }
 }

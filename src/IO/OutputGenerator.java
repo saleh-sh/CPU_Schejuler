@@ -1,8 +1,10 @@
 package IO;
 
+import entities.Processor;
+
 public class OutputGenerator {
     
-    public void generateOutput(){
-        
+    public static void generateOutput(){
+        System.out.println(Processor.INSTANCE.toString());
     }
 }
