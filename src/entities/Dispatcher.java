@@ -43,6 +43,18 @@ public class Dispatcher {
         Task currentTask = null;
 
         while (processor.getReadyTaskCount() != 0 || !currentTask.isTerminated()) {
+
+            if (processor.isBusy() && currentTask.isTerminated()) {
+                currentTask.terminate();
+                processor.unassign();
+            }
+
+            if (processor.isBusy() && currentTask.isPreemted(quantom)) {
+                currentTask.preemte();
+                processor.unassign();
+                processor.addToReady(currentTask);
+            }
+
             if (!processor.isBusy()) {
                 // selected task
                 currentTask = scheduler.rrScheduling();
@@ -56,16 +68,7 @@ public class Dispatcher {
             currentTask.increaseTotalTime();
             OutputGenerator.generateOutput();
 
-            if (currentTask.isTerminated()) {
-                currentTask.terminate();
-                processor.unassign();
-            }
-
-            if (currentTask.isPreemted(quantom)) {
-                currentTask.preemte();
-                processor.unassign();
-                processor.addToReady(currentTask);
-            }
+            // end of cpu round
             processor.increaseTime();
         }
 
