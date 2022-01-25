@@ -72,6 +72,10 @@ public class Processor {
         return this.scheduler;
     }
 
+    public int getTime() {
+        return this.time;
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();

@@ -18,7 +18,8 @@ public class Scheduler {
     }
 
     public Task rrScheduling() {
-        return null;
+        Queue<Task> readyQueue = Processor.INSTANCE.getReadyQueue();
+        return readyQueue.poll();
     }
 
     public Task fcfsScheduling() {

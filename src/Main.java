@@ -8,7 +8,7 @@ public class Main {
         Initializer.setup();
         Processor processor = Processor.INSTANCE;
         // processor.run(Algorithm.FCFS);
-        processor.run(Algorithm.SJF);
-        // processor.run(Algorithm.RR);
+        // processor.run(Algorithm.SJF);
+        processor.run(Algorithm.RR);
     }
 } 

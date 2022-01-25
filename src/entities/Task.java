@@ -7,6 +7,7 @@ public class Task {
 
     private State state;
     private int totalTime;
+    private int runPoint;
 
     // constants
     public final String NAME;
@@ -29,14 +30,28 @@ public class Task {
 
     public void run(){
         this.state = State.RUNNING;
+        this.runPoint = Processor.INSTANCE.getTime();
     }
 
     public void terminate(){
         this.state = State.TERMINATED;
     }
 
+    public void preemte(){
+        this.state = State.READY;
+    }
+
     public boolean isTerminated(){
         return (this.totalTime == this.DURATION);
+    }
+
+    public boolean isPreemted(int quantom){
+        int currentTime = Processor.INSTANCE.getTime();
+        return (currentTime - this.runPoint > quantom);
+    }
+
+    public int getRunPoint() {
+        return this.runPoint;
     }
 
     @Override
