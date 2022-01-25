@@ -79,9 +79,9 @@ public class Dispatcher {
         Scheduler scheduler = processor.getScheduler();
         Task currentTask = null;
 
-        while (processor.getReadyTaskCount() != 0 || !currentTask.isTerminated()) {
+        while (processor.getReadyTaskCount() != 0 || !processor.isBusy()) {
 
-            if (currentTask != null && currentTask.isTerminated()) {
+            if (processor.isBusy() && currentTask.isTerminated()) {
                 currentTask.terminate();
                 processor.unassign();
             }
