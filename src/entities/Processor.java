@@ -2,7 +2,6 @@ package entities;
 
 import java.util.LinkedList;
 import java.util.Queue;
-
 import enums.Algorithm;
 
 public class Processor {
@@ -13,7 +12,6 @@ public class Processor {
     private Task currentTask;
     private Scheduler scheduler;
     private Dispatcher dispatcher;
-    private Algorithm algorithm;
 
     public static Processor INSTANCE = new Processor();
 
@@ -25,8 +23,19 @@ public class Processor {
         this.dispatcher = new Dispatcher();
     }
 
-    public void run(){
-        this.dispatcher.dispatch(this.algorithm);
+    public void run(Algorithm algorithm) {
+        switch (algorithm) {
+            case SJF:
+                this.dispatcher.sjfDispatch();
+                break;
+
+            case RR:
+                this.dispatcher.rrDispatch();
+                break;
+
+            default:
+                this.dispatcher.fcfsDispatch();
+        }
     }
 
     public boolean isBusy() {
@@ -47,10 +56,6 @@ public class Processor {
         this.time++;
     }
 
-    public void setAlgorithm(Algorithm algorithm) {
-        this.algorithm = algorithm;
-    }
-
     public void addToReady(Task t) {
         this.readyQueue.add(t);
     }
@@ -59,7 +64,7 @@ public class Processor {
         return this.readyQueue;
     }
 
-    public int getReadyTaskCount(){
+    public int getReadyTaskCount() {
         return this.readyQueue.size();
     }
 
@@ -75,7 +80,7 @@ public class Processor {
         builder.append(" Total CPU Time : " + this.time + "\n");
         builder.append(" ####################\n");
         builder.append(" Ready Queue : \n");
-        for(Task t : this.readyQueue){
+        for (Task t : this.readyQueue) {
             builder.append(t.toString());
         }
         builder.append(" ####################\n");

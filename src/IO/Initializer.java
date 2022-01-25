@@ -1,10 +1,7 @@
 package IO;
-
 import java.util.Scanner;
-
 import entities.Processor;
 import entities.Task;
-import enums.Algorithm;
 import enums.Type;
 
 public class Initializer {
@@ -25,10 +22,6 @@ public class Initializer {
             }
 
         }
-
-        processor.setAlgorithm(Algorithm.FCFS);
-        // processor.setAlgorithm(Algorithm.SJF);
-        // processor.setAlgorithm(Algorithm.RR);
 
     }
 

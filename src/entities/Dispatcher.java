@@ -1,32 +1,16 @@
 package entities;
-
 import IO.OutputGenerator;
-import enums.Algorithm;
 
 public class Dispatcher {
     
-    public void dispatch(Algorithm algorithm){
-        switch(algorithm){
-            case SJF:
-                sjfDispatch();
-            break;
 
-            case RR:
-                rrDispatch();
-            break;
-
-            default:
-                fcfsDispatch();       
-        }
+    public void sjfDispatch() {
     }
 
-    private void sjfDispatch() {
+    public void rrDispatch() {
     }
 
-    private void rrDispatch() {
-    }
-
-    private void fcfsDispatch() {
+    public void fcfsDispatch() {
         Processor processor = Processor.INSTANCE;
         Scheduler scheduler = processor.getScheduler();
         Task currentTask = null;
@@ -35,7 +19,7 @@ public class Dispatcher {
 
             if (!processor.isBusy()) {
                 // selected task
-                currentTask = scheduler.schedule(Algorithm.FCFS);
+                currentTask = scheduler.fcfsScheduling();
 
                 // assign cpu to task
                 processor.assign(currentTask);
