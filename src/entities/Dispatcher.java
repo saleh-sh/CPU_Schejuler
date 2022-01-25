@@ -74,7 +74,12 @@ public class Dispatcher {
         Scheduler scheduler = processor.getScheduler();
         Task currentTask = null;
 
-        while (processor.getReadyTaskCount() != 0) {
+        while (processor.getReadyTaskCount() != 0 || !currentTask.isTerminated()) {
+
+            if (currentTask != null && currentTask.isTerminated()) {
+                currentTask.terminate();
+                processor.unassign();
+            }
 
             if (!processor.isBusy()) {
                 // selected task
@@ -87,12 +92,9 @@ public class Dispatcher {
             }
 
             currentTask.increaseTotalTime();
-            if (currentTask.isTerminated()) {
-                currentTask.terminate();
-                processor.unassign();
-            }
-
             OutputGenerator.generateOutput();
+
+            // end of the cpu round
             processor.increaseTime();
         }
     }
