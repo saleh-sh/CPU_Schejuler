@@ -1,5 +1,8 @@
 package entities;
 
+import enums.State;
+import enums.Type;
+
 public class Task {
 
     private State state;
