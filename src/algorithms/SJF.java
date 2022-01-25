@@ -12,7 +12,11 @@ public class SJF implements Scheduler{
     }
 
     @Override
-    public Task schedule() {
+    public void schedule() {
+    }
+
+    @Override
+    public Task getNextTask() {
         return null;
     }
 

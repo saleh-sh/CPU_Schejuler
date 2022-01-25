@@ -14,7 +14,7 @@ public class Main {
         // SJF sjf = new SJF();
         // RoundRobin RR = new RoundRobin();
 
-        // user inputs to initialization
+        // user inputs
         int taskCount = scanner.nextInt();
         for (int counter = 0; counter < taskCount; counter++) {
             String taskName = scanner.next();

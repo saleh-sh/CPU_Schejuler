@@ -3,6 +3,7 @@ package algorithms;
 import entities.Task;
 
 public interface Scheduler {
-    Task schedule();
+    void schedule();
+    Task getNextTask();
     void addToReady(Task t);
 }

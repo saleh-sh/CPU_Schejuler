@@ -12,7 +12,11 @@ public class RoundRobin implements Scheduler{
         this.readyQueue = new LinkedList<>();
     }
     @Override
-    public Task schedule() {
+    public void schedule() {
+    }
+
+    @Override
+    public Task getNextTask() {
         return null;
     }
 
