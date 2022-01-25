@@ -12,7 +12,7 @@ public class Dispatcher {
 
         while (processor.getReadyTaskCount() != 0 || !currentTask.isTerminated()) {
 
-            if (currentTask != null && currentTask.isTerminated()) {
+            if (processor.isBusy() && currentTask.isTerminated()) {
                 currentTask.terminate();
                 processor.unassign();
             }
