@@ -80,11 +80,12 @@ public class Processor {
     public String toString() {
         StringBuilder builder = new StringBuilder();
 
-        builder.append("____________________\n");
+        builder.append(" ____________________\n");
         builder.append(" Total CPU Time : " + this.time + "\n");
         builder.append(" ####################\n");
         builder.append(" Ready Queue : \n");
         for (Task t : this.readyQueue) {
+            builder.append(" ....................\n");
             builder.append(t.toString());
         }
         builder.append(" ####################\n");
@@ -92,7 +93,7 @@ public class Processor {
             builder.append(" Current Task : \n" + this.currentTask.toString());
         else
             builder.append(" Current Task : \n" + "  processor is free!!!\n");
-
+        builder.append("\n");
         return builder.toString();
     }
 }
