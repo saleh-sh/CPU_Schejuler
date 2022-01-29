@@ -8,6 +8,7 @@ public class Task {
     private State state;
     private int totalTime;
     private int runPoint;
+    private int arrivalTime;
 
     // constants
     public final String NAME;
@@ -24,32 +25,42 @@ public class Task {
         this.state = State.READY;
     }
 
+    public Task(String name, Type type, int duration, int arrivalTime) {
+        this(name, type, duration);
+        this.arrivalTime = arrivalTime;
+    }
+
     public void increaseTotalTime() {
         this.totalTime++;
     }
 
-    public void run(){
+    public void run() {
         this.state = State.RUNNING;
         this.runPoint = Processor.INSTANCE.getTime();
     }
 
-    public void terminate(){
+    public void terminate() {
         this.state = State.TERMINATED;
     }
 
-    public void preemte(){
+    public void preemte() {
         this.state = State.READY;
     }
 
-    public boolean isTerminated(){
+    public boolean isTerminated() {
         return (this.totalTime == this.DURATION);
     }
 
-    public boolean isPreemted(int quantom){
+    public boolean isPreemted(int quantom) {
         int currentTime = Processor.INSTANCE.getTime();
         return ((currentTime - this.runPoint + 1 > quantom) && Processor.INSTANCE.getReadyTaskCount() != 0);
     }
 
+    public int getArrivalTime() {
+        return arrivalTime;
+    }
+
+    // HRRN
     public int getRunPoint() {
         return this.runPoint;
     }

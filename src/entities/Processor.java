@@ -2,6 +2,7 @@ package entities;
 
 import java.util.LinkedList;
 import java.util.Queue;
+
 import enums.Algorithm;
 
 public class Processor {
@@ -31,6 +32,10 @@ public class Processor {
 
             case RR:
                 this.dispatcher.rrDispatch();
+                break;
+
+            case HRRN:
+                this.dispatcher.hrrnDispatch();
                 break;
 
             default:
