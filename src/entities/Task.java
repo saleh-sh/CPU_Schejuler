@@ -73,6 +73,15 @@ public class Task {
         builder.append("  Task Total Time -> " + this.totalTime + "\n");
         builder.append("  Task State -> " + this.state + "\n");
 
+        builder.append(" ------- HRRN -------" + "\n");
+        builder.append("  Arrival Time ->" + this.arrivalTime + "\n");
+
+        int waitingTime = (Processor.INSTANCE.getTime() - this.arrivalTime);
+        builder.append("  Waiting Time ->" + waitingTime + "\n");
+
+        double responseRatio = ((double) (waitingTime + this.DURATION)) / this.DURATION;
+        builder.append("  Response Ratio ->" + responseRatio + "\n");
+
         return builder.toString();
     }
 }

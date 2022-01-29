@@ -41,6 +41,7 @@ public class Scheduler {
             int waitingTime = time - t.getArrivalTime();
             double responseRatio = ((double) (waitingTime + t.DURATION)) / t.DURATION;
             if (Double.compare(responseRatio, maxResponseRatio) > 0) {
+                maxResponseRatio = responseRatio;
                 selectedTask = t;
             }
         }
